@@ -16,6 +16,7 @@ NB: If you install more packages, please update the requirements using `pip free
 | jitp-staging-test.odt | A template file for LibreOffice. Click here for [documentation on loading these styles using the Styles and Formatting pane](https://documentation.libreoffice.org/assets/Uploads/Documentation/en/GS5.2/HTML/GS5203-StylesAndTemplates.html). |
 | template as test file.docx | Either of the template files above, opened and then saved as a .docx file. Can be passed to to-html.py to test functionality over the range of article features. |
 | to-html.py | A Python 3 script using the mammoth package to convert .docx files to .html files. We're working on automatically calling this file on new .docx files uploaded to the repo. |
+|JITPtest.css |Greg's clean stylesheet for use on Manifold |
 
 # What's next for the repo?
 
