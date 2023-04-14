@@ -8,6 +8,7 @@ import re
 import os
 import shutil
 
+# Define mapping between Word styles and html elements or classes
 style_map = """
 p[style-name='Byline'] => p.byline:fresh
 p[style-name='Abstract'] => section.abstract > p:fresh
@@ -15,6 +16,7 @@ p[style-name='Authorbio'] => section.authorbio > p:fresh
 p[style-name='Blockquote'] => blockquote > p:fresh
 p[style-name='Figure'] => figure
 r[style-name='figcaption'] => figcaption
+r[style-name='caption'] => caption
 r[style-name='author-name'] => span.author-name
 p[style-name='Reference'] => section.bibliography > p:fresh
 p[style-name='Preformatted Text'] => pre:fresh
@@ -71,6 +73,10 @@ with open(input_file, "rb") as docx_file:
 
     # fix failure of :separator for pre
     interim_html = re.sub(r"</pre>"+"\n"+"<pre>", "\n", interim_html)
+    
+    # tuck table captions into the actual table
+    interim_html = re.sub(r"<p>"+"(<caption>.*?</caption>)"+r"</p><table>", r"<table>"+r"\1", interim_html) 
+
 
     # wrap in necessary html document declarations
     ## NB: change language if the article isn't in English
@@ -84,8 +90,6 @@ with open(input_file, "rb") as docx_file:
 </body>
 </html>
 '''
-
-    # TO DO: add metadata to <head>
 
     # write to output directory
     with open(output_file, "w") as html_file:
