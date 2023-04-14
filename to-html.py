@@ -72,6 +72,20 @@ with open(input_file, "rb") as docx_file:
     # fix failure of :separator for pre
     interim_html = re.sub(r"</pre>"+"\n"+"<pre>", "\n", interim_html)
 
+    # wrap in necessary html document declarations
+    ## NB: change language if the article isn't in English
+    interim_html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+''' + interim_html + '''
+</body>
+</html>
+'''
+
+    # TO DO: add metadata to <head>
 
     # write to output directory
     with open(output_file, "w") as html_file:
