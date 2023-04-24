@@ -21,6 +21,7 @@ r[style-name='author-name'] => span.author-name
 p[style-name='Reference'] => section.bibliography > p:fresh
 p[style-name='Preformatted Text'] => pre:fresh
 r[style-name='code'] => code
+p[style-name='TableHeader] => th
 """
 
 input_file=str(sys.argv[1])
@@ -84,6 +85,7 @@ with open(input_file, "rb") as docx_file:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 ''' + interim_html + '''
