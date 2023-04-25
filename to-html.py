@@ -81,7 +81,7 @@ with open(input_file, "rb") as docx_file:
     interim_html = re.sub(r"<p>"+"(<caption>.*?</caption>)"+r"</p><table>", r"<table>"+r"\1", interim_html) 
 
     # tuck abstract h2 inside the abstract section
-    interim_html = re.sub(r'(<h2>Abstract</h2>\n)(\n)(<section class="abstract">\n)', r'\2\3\1', interim_html)
+    interim_html = re.sub(r'(<h2>.*Abstract</h2>\n)(\n)(<section class="abstract">\n)', r'\2\3\1', interim_html)
 
 
     # wrap in necessary html document declarations
@@ -118,7 +118,8 @@ with open(input_file, "rb") as docx_file:
     # extract article title and add that to head, too
     title_html = re.findall(r'<h1>(.*?)</h1>', interim_html)
     if(title_html):
-        title_html = html.escape(title_html[0])
+        title_html = re.sub(r'<a.*?></a>', '', title_html[0])
+        title_html = html.escape(title_html)
         title_html = '<meta name="citation_title" content="' + title_html + '">'
         interim_html = re.sub(r'</head>', '\t' + title_html + '\n</head>', interim_html)
 
