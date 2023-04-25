@@ -78,6 +78,9 @@ with open(input_file, "rb") as docx_file:
     # tuck table captions into the actual table
     interim_html = re.sub(r"<p>"+"(<caption>.*?</caption>)"+r"</p><table>", r"<table>"+r"\1", interim_html) 
 
+    # tuck abstract h2 inside the abstract section
+    interim_html = re.sub(r'(<h2>Abstract</h2>\n)(\n)(<section class="abstract">\n)', r'\2\3\1', interim_html)
+
 
     # wrap in necessary html document declarations
     ## NB: change language if the article isn't in English
@@ -92,6 +95,8 @@ with open(input_file, "rb") as docx_file:
 </body>
 </html>
 '''
+
+    # extract author names from bio section and insert into head
 
     # write to output directory
     with open(output_file, "w") as html_file:
