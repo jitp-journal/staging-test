@@ -7,6 +7,8 @@ import sys
 import re
 import os
 import shutil
+import datetime
+import html
 
 # Define mapping between Word styles and html elements or classes
 style_map = """
@@ -96,7 +98,41 @@ with open(input_file, "rb") as docx_file:
 </html>
 '''
 
+    # add standard journal info to head
+    journal_html = '''
+    <meta name="citation_journal_title" content="Journal of Interactive Technology and Pedagogy">
+    <meta name="citation_journal_abbrev" content="JITP">
+    <meta name="citation_year" content="%s">
+''' % datetime.date.today().year
+
+    interim_html = re.sub(r'</head>', journal_html + '\n</head>', interim_html)
+
+
     # extract author names from bio section and insert into head
+    authors = re.findall(r'<span class="author-name">(.*?)</span>', interim_html)
+    author_html = '<meta name="citation_authors" content="' + "; ".join(authors) + '">'
+
+    interim_html = re.sub(r'</head>', '\t' + author_html + '\n</head>', interim_html)
+
+
+    # extract article title and add that to head, too
+    title_html = re.findall(r'<h1>(.*?)</h1>', interim_html)
+    if(title_html):
+        title_html = html.escape(title_html[0])
+        title_html = '<meta name="citation_title" content="' + title_html + '">'
+        interim_html = re.sub(r'</head>', '\t' + title_html + '\n</head>', interim_html)
+
+
+    # can we also prepopulate the abstract field? multiparagraph is tricky, but let's try a substitution.
+    abstract_html = re.findall(r'(?s)<h2>Abstract</h2>\n(.*?)</section>', interim_html)
+    if(abstract_html):
+        abstract_html = re.sub(r'</p>\n<p>', ' || ', abstract_html[0])
+        abstract_html = re.sub(r'<p>', "", abstract_html)
+        abstract_html = re.sub(r'</p>', "", abstract_html)
+        abstract_html = '<meta name="citation_abstract" content="' + html.escape(abstract_html) + '">'
+        interim_html = re.sub(r'</head>', '\t' + abstract_html + '\n</head>', interim_html)
+
+
 
     # write to output directory
     with open(output_file, "w") as html_file:
