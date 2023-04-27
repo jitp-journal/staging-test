@@ -80,8 +80,21 @@ with open(input_file, "rb") as docx_file:
     # tuck table captions into the actual table
     interim_html = re.sub(r"<p>"+"(<caption>.*?</caption>)"+r"</p><table>", r"<table>"+r"\1", interim_html) 
 
-    # tuck abstract h2 inside the abstract section
+    # tuck abstract h2 inside the abstract section; add matching id for consistency
     interim_html = re.sub(r'(<h2>.*Abstract</h2>\n)(\n)(<section class="abstract">\n)', r'\2\3\1', interim_html)
+
+    interim_html = re.sub(r'(class="abstract")', r'id="abstract" \1', interim_html)
+
+
+
+    # same for bibliography and authorbio sections
+    interim_html = re.sub(r'(<h2>.*References</h2>\n)(\n)(<section class="bibliography">\n)', r'\2\3\1', interim_html)
+
+    interim_html = re.sub(r'(class="bibliography")', r'id="bibliography" \1', interim_html)
+
+    interim_html = re.sub(r'(<h2>.*About the Author[s]*</h2>\n)(\n)(<section class="authorbio">\n)', r'\2\3\1', interim_html)
+
+    interim_html = re.sub(r'(class="authorbio")', r'id="authorbio" \1', interim_html)
 
 
     # wrap in necessary html document declarations
