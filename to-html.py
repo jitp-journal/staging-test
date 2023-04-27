@@ -129,12 +129,14 @@ with open(input_file, "rb") as docx_file:
 
 
     # extract article title and add that to head, too
-    title_html = re.findall(r'<h1>(.*?)</h1>', interim_html)
-    if(title_html):
-        title_html = re.sub(r'<a.*?></a>', '', title_html[0])
-        title_html = html.escape(title_html)
-        title_html = '<meta name="citation_title" content="' + title_html + '">'
+    title = re.findall(r'<h1>(.*?)</h1>', interim_html)
+    if(title):
+        title = re.sub(r'<a.*?></a>', '', title[0])
+        title = html.escape(title)
+        title_html = '<meta name="citation_title" content="' + title + '">' + '\n\t<title>' + title + '</title>'
         interim_html = re.sub(r'</head>', '\t' + title_html + '\n</head>', interim_html)
+
+    # TO DO: add author last name to <title> instead of just the article title
 
 
     # can we also prepopulate the abstract field? multiparagraph is tricky, but let's try a substitution.
