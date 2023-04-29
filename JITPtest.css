@@ -1,7 +1,7 @@
 /*
-Document: JITP Test
-Authors: Kelly Hammond, Greg Palermo
-Date: 2022-04-01
+Document: JITP Styles for Manifold
+v1 by Kelly Hammond, Greg Palermo, 2022-04-01
+v2 with updates by Ben Miller, 2023-04-29
 */
 
 /*===PARATEXT===*/
@@ -19,6 +19,7 @@ Date: 2022-04-01
 .author-name {
   font-weight: bold;
 }
+
 
 /*===ARTICLE BODY===*/
 
@@ -97,4 +98,30 @@ th, td {
 {
   padding-left: 22px;
   text-indent: -1em;
+}
+
+/*===FOUND IN PRODUCTION, SOURCE UNCLEAR===*/
+
+.caption {
+  text-align: center;
+  font-size: 90%;
+}
+
+.quote {
+  text-align: center;
+  font-style: italic;
+  margin: 10%;
+}
+
+.textTitle {
+  text-align: center;
+}
+
+.byline {
+  text-align: center;
+  text-indent: 0;
+}
+
+.pf1 {
+  text-indent: 0;
 }

@@ -69,7 +69,7 @@ with open(input_file, "rb") as docx_file:
     interim_html = re.sub("\n\n"+r"<h1", "\n"+r"<h1", interim_html)
     interim_html = re.sub(r"<blockquote>", "\n"+r"<blockquote>", interim_html)
     interim_html = re.sub(r"<section", "\n\n"+r"<section", interim_html)
-    interim_html = re.sub(r"</section>", r"</section>"+"\n", interim_html)
+    interim_html = re.sub(r"</section>", r"\n</section>"+"\n", interim_html)
 
     # fix anchors that break figcaptions
     interim_html = re.sub(r"</figcaption><a"+"(.*?)"+r"</a><figcaption>", r"<a"+r"\1"+r"</a>", interim_html)
@@ -85,8 +85,6 @@ with open(input_file, "rb") as docx_file:
 
     interim_html = re.sub(r'(class="abstract")', r'id="abstract" \1', interim_html)
 
-
-
     # same for bibliography and authorbio sections
     interim_html = re.sub(r'(<h2>.*References</h2>\n)(\n)(<section class="bibliography">\n)', r'\2\3\1', interim_html)
 
@@ -96,8 +94,18 @@ with open(input_file, "rb") as docx_file:
 
     interim_html = re.sub(r'(class="authorbio")', r'id="authorbio" \1', interim_html)
 
+    # add section + h2 for footnotes, move footnotes to just before references
+    interim_html = re.sub(r'(?s)(<section id="bibliography".*?</section>)(\n*)(<section id="authorbio".*?</section>\n)(<ol><li id="footnote.*?</ol>)', r'<section class="footnoteblock">\n<h2>Notes</h2>\n\4\n</section> <!-- end footnoteblock -->\n\n\1\n\n\3', interim_html)
 
-    # wrap in necessary html document declarations
+    # wrap everything after abstract and before footnotes in div#article-body
+    interim_html = re.sub(r'(?s)(<section id="abstract".*?</section>)(\n*)(.*?)(<section)', r'\1 <!-- end abstract -->\n\n<section id="article-body">\n\3</section> <!-- end article-body -->\n\n\4', interim_html)
+
+    # wrap article-body + everything to end in div#text-column 
+    # (back compatibility from WordPress, sigh)
+    interim_html = re.sub(r'(<section id="article-body")', r'<div id="text-column">\n\1', interim_html)
+    interim_html = interim_html + '\n</div> <!-- end text-column -->\n'
+
+    # wrap whole thing in necessary html document declarations
     ## NB: change language if the article isn't in English
     interim_html = '''<!DOCTYPE html>
 <html lang="en">

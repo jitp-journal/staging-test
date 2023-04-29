@@ -1,0 +1,90 @@
+/* Core HTML Elements*/
+a {color: #0066cc; -webkit-transition:background-color .25s linear; transition: background-color .25s linear; text-decoration: none;}
+a:active, a:focus, a:hover {background-color:#FFFFCC; color: #BF1722; border-top: 1px solid #3b3b3b; border-bottom: 1px solid #3b3b3b; border-radius: .2em; text-decoration: none;}
+blockquote {margin: 1.5em 2em 1.5em 2em;}
+body {font-size: medium; margin-top: 1em; margin-left: 1em; margin-right: 1em;}
+figure {margin: 1em auto 1em auto; text-align:center; text-indent: 0;}
+img {text-align:center; text-indent:0;}
+ol, ul {margin-top: 1em; margin-bottom: 1em; padding: 0; list-style-position: outside;}
+ol.ref {list-style-type: none;}
+ol.number {list-style-type: decimal; margin-left: 2em;}
+ul.bullet {list-style-type: disc; margin-left: 2em;}
+li {margin-left: 1em;}
+p {text-indent: 1em; text-align:left; margin-top: 0; margin-bottom: 0; line-height: 1.575}
+sub {vertical-align: sub; font-size: 0.675em; line-height: 1.2; vertical-align: 35%;}
+sup {top: 0; font-size: 0.675em; line-height: 1.2; vertical-align: 35%;}
+table {width:100%; margin-top: 1.25em; margin-bottom: 1.25em; border-collapse: collapse;}
+table, td, th {border: 1px solid black;}
+td {vertical-align: middle; padding: 2px;}
+th {vertical-align: middle; padding: 2px;}
+h1 + p, h2 + p, h3 + p, h4 + p {text-indent:0; margin-top: 0;}
+strong {}
+cite {font-style: italic;}
+em {}
+mark {}
+
+/*Part and Chapters*/
+.textTitle {text-align:left; text-indent:0; font-size: 2em; margin: 1% 0 0 2.5rem;}
+.cs {text-align:left; text-indent:0; font-size: 1.35rem; margin-top: .25em; margin-bottom:1%; margin-left: 2.5rem;}
+.abstract {margin: .5em 2em 0 2.5rem; }
+.abst {text-indent: 0; margin:0; font-weight: 200;}
+.abst + .abst {text-indent: 1em; margin-top: 0;}
+.au {text-align:left; font-size: 0.75em; margin-top:.35em; margin-left: 2.5rem; text-indent: 0; line-height:1.4;}
+.au + .au {margin-top:0;}
+
+/*Epigraph*/
+.epigraph {margin:3em 2.5em 0 2.5em;}
+.epf {text-indent: 0; text-align:left; font-size: 95%;}
+.ept {text-align:right; margin-top:.3em; font-size: 95%; font-style: italic; text-indent: 0;}
+.epf + .epf {margin-top: 1em;}
+.ept + .epf {margin-top: 1em;}
+
+/*Heads*/
+.ah {font-weight:bold; font-size: 125%; margin-top:1.25em; margin-right: 20%; margin-bottom: 0; text-indent:0; text-align:left;}
+.bh {font-size: 115%; font-weight: bold; font-style: italic; margin-top:1.25em; margin-bottom:0%; text-indent:0; text-align:left;}
+.ch {font-variant-caps: all-small-caps; font-size: 95%; margin-top:1.25em; margin-bottom:0; text-indent: 0; text-align:left;}
+
+/*Body*/
+.pcon {margin-top: 1em; margin-bottom: 0; text-indent: 0; text-align:left;}
+.pf {margin-top: 3em; margin-bottom: 0; text-align:left; text-indent: 0;}
+.psec {margin-top: 2em; text-indent: 0; text-align:left;}
+.bio {margin: 3em auto 0 auto;}
+h1 + div.bio, h2 + div.bio, h3 + div.bio, h4 + div.bio {margin-top: 0;}
+.aubio {text-align:left; text-indent:0;}
+.aubio + .aubio {margin-top: .5em;}
+
+/*Block Quotation*/
+.bqs {margin: 1em 2em 0 0; text-align:left; text-indent: 0;}
+.bqs + .bqs {margin-top:0; margin-right: 2em; margin-left:0; text-indent: 1em; text-align:left;}
+
+/*Notes*/
+sup + .enref {font-family: monospace; font-weight: bold; font-size: 0.675em; line-height: 1.2; vertical-align: 35%;}
+.en {text-indent:0; text-align:left; font-size: 90%;}
+p.en + p {text-indent:0;}
+.rf {margin-left: 1em; text-indent: -1em; text-align:left;}
+
+/*Left-Alinged Figure*/
+figure.figl {max-width: 50%; float:left; margin-right:1.5em; margin-left:0;}
+figure.figl > img {margin-right:0; margin-left:0;}
+.figcapl {font-size:80%; text-align:left; text-indent:0; margin: .25em 0 .75em 0;}
+
+/*Centered Figure*/
+.fig {text-align:center; text-indent:0; margin-top: 1em;}
+.figcap {font-size:80%; text-align:center; text-indent:0; margin: .25em 2em .75em 2em;}
+
+/*Right-Alinged Figure*/
+figure.figr {max-width: 50%; float:right; margin-right:0; margin-left:1.5em;}
+figure.figr > img {margin-right:0; margin-left:0;}
+.figcapr {font-size:80%; text-align:left; text-indent:0; margin: .25em 0 .75em 0;}
+
+/*Table*/
+.tabletitle {font-weight:bold; font-size: 90%; text-indent: 0; line-height: 1.2; margin-top: 1em;}
+.tabletitle + table {margin-top: .25em;}
+.tch {text-indent: 0; vertical-align: middle; text-align: center; font-size: 75%; font-weight: bold;}
+.td {text-indent: 0; vertical-align: middle; text-align: center; font-size: 75%;}
+
+/* ----- *** Character Styles *** ----- */
+
+/*Reference/Cross-References*/
+.enref {font-family: monospace; font-weight: bold; font-size: 0.675em; line-height: 1.2; vertical-align: 35%;}
+.mlabib {margin-left: 1em; text-indent:-1em;}
