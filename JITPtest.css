@@ -93,6 +93,12 @@ th, td {
   vertical-align: super;
 }
 
+/* Mammoth formats footnotes as lists; close up extra space this adds */
+.footnoteblock > ol {
+  margin-top: -1.5em;
+  margin-left: 0.5rem;
+}
+
 #bibliography,  /* for back-compatability */
 .bibliography   /* moving forward */
 {

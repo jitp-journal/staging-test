@@ -76,6 +76,11 @@ with open(input_file, "rb") as docx_file:
 
     # fix failure of :separator for pre
     interim_html = re.sub(r"</pre>"+"\n"+"<pre>", "\n", interim_html)
+
+    # fix footnote references
+    interim_html = re.sub(r'<sup><sup>(.*?)</sup></sup>', r'<sup>\1</sup>', interim_html)
+
+    interim_html = re.sub(r'<sup>(<a href="#footnote.*?)>\[(\d?)\]</a></sup>', r'\1 class="ftnref">\2</a>', interim_html)
     
     # tuck table captions into the actual table
     interim_html = re.sub(r"<p>"+"(<caption>.*?</caption>)"+r"</p><table>", r"<table>"+r"\1", interim_html) 
