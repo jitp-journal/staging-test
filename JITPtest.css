@@ -67,7 +67,7 @@ figure ul, figure ol {
   padding: 0 0 0 1em;
 }
 
-figcaption {
+figcaption, caption {
   text-align: center;
   font-size: 0.8em;
 }
