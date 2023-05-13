@@ -110,6 +110,17 @@ with open(input_file, "rb") as docx_file:
     interim_html = re.sub(r'(<section id="article-body")', r'<div id="text-column">\n\1', interim_html)
     interim_html = interim_html + '\n</div> <!-- end text-column -->\n'
 
+    # add Creative Commons license block
+    cc_html = '''
+<div class="entry-meta entry-meta-creative-commons">
+
+	<a data-logo="1" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" target="_blank"><img alt="Attribution-NonCommercial-ShareAlike 4.0 International" data-license="by-nc-sa" data-size="normal" src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" style="border-width:0"/></a>
+	<p>This entry is licensed under a Creative Commons <a data-logo="0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" target="_blank">Attribution-NonCommercial-ShareAlike 4.0 International</a> license.</p>
+
+</div>    
+'''
+    interim_html = re.sub(r'(\n</div> <!-- end text-column -->\n)', cc_html + r'\1', interim_html)
+
     # wrap whole thing in necessary html document declarations
     ## NB: change language if the article isn't in English
     interim_html = '''<!DOCTYPE html>
@@ -160,6 +171,7 @@ with open(input_file, "rb") as docx_file:
         abstract_html = re.sub(r'</p>', "", abstract_html)
         abstract_html = '<meta name="citation_abstract" content="' + html.escape(abstract_html) + '">'
         interim_html = re.sub(r'</head>', '\t' + abstract_html + '\n</head>', interim_html)
+
 
 
 
