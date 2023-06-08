@@ -5,7 +5,7 @@ docopt==0.6.2
 idna==3.3
 mammoth==1.4.19
 pipreqs==0.4.11
-requests==2.28.1
+requests==2.31.0
 six @ file:///AppleInternal/BuildRoot/Library/Caches/com.apple.xbs/Sources/python3/python3-110/six-1.15.0-py2.py3-none-any.whl
 urllib3==1.26.9
 yarg==0.1.9
