@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="citation_journal_title" content="Journal of Interactive Technology and Pedagogy">
+    <meta name="citation_journal_abbrev" content="JITP">
+    <meta name="citation_year" content="2023">
+
+	<meta name="citation_authors" content="Thisbe Sez Author; N. Owen Winno">
+	<meta name="citation_title" content="The Title is a Heading 1">
+	<title>The Title is a Heading 1</title>
+	<meta name="citation_abstract" content="Every full-length article has to have an abstract, and every abstract should start with a heading that just says &amp;quot;Abstract,&amp;quot; as you see just before this paragraph. However many paragraphs there are in the abstract, highlight them all and apply the “Abstract” style. || Short forms don’t usually have an abstract, and that’s okay. If you don’t see one, just go ahead and skip it. || NB: Did you notice that the bylines now have their own style? It’s called “Byline” so you know what to use. So far, we haven’t been separately marking the author names within the byline, but I suppose that could change eventually.
+">
+</head>
+<body>
+
+<h1>The Title is a Heading 1</h1>
+<p class="byline">Thisbe Sez Author, University of Record</p>
+<p class="byline">N. Owen Winno, Affiliated College</p>
+
+
+<section id="abstract" class="abstract">
+<h2>Abstract</h2>
+<p>Every full-length article has to have an abstract, and every abstract should start with a heading that just says &quot;Abstract,&quot; as you see just before this paragraph. However many paragraphs there are in the abstract, highlight them all and apply the “Abstract” style.</p>
+<p>Short forms don’t usually have an abstract, and that’s okay. If you don’t see one, just go ahead and skip it.</p>
+<p>NB: Did you notice that the bylines now have their own style? It’s called “Byline” so you know what to use. So far, we haven’t been separately marking the author names within the byline, but I suppose that could change eventually.</p>
+</section> <!-- end abstract -->
+
+<div id="text-column">
+<section id="article-body">
+<p>Sometimes the text of the article starts with a heading, but sometimes it doesn't; just make sure the style shifts from Abstract to Normal. The Normal style will apply to any body text that isn’t explicitly something else (like a blockquote, etc). Top-level headings within the main text of the article should be styled as Heading 2, like the one that starts the section below. These will then appear in the article’s internal table of contents. (Thanks, Manifold!)</p>
+
+<h2>Body Section Headings Take “Heading 2”</h2>
+<p>I like the idea of giving each of the major section headings its own id, because that not only enables the table of contents, but also makes it easier to provide direct links to relevant sections, e.g. for citations in other online journals. Luckily, we no longer need to hard-code those IDs, because Manifold automatically generates them as part of the TOC-building process. Sweet!</p>
+<p>Some authors will skip lines between paragraphs, and some authors will use indentation. Either way, the appropriate paragraphing markup should be created automatically. We’re also happy to report that footnotes can be added in whatever native style the word processor uses (be that Microsoft Word<a href="#footnote-1" id="footnote-ref-1" class="ftnref">1</a>, Google Docs<a href="#footnote-2" id="footnote-ref-2" class="ftnref">2</a>, or LibreOffice Writer<a href="#footnote-3" id="footnote-ref-3" class="ftnref">3</a>), and the styles they generate will be properly ingested by Manifold.</p>
+<p>For basic in-line (i.e. character-based, i.e. span) styles like <strong>bold</strong> and <em>italic</em>, for those, you don’t even need a style per se: you can just use the normal boldface or italic buttons. I’ll have more to say about non-basic in-line styles when we get to the author bios, but you should know that the <em>custom styles starting with lowercase letters are intended for in-line use, while the custom styles starting with capital letters are for block-displaying chunks like paragraphs and headings</em>. LibreOffice keeps the character-based styles on their own tab within the Styles pane; Word mixes them together with paragraph-based styles.</p>
+
+<h2>This Second Body Section is also a Heading 2</h2>
+<p>This section introduces some features beyond normal text. Here's a figure, with its own caption and alt text:</p><figure><img alt="Within a rectangular frame, a zigzag line from left to right mimics two mountain peaks. Above the line, a circle could be a sun." src="test_fig_1.png" /><figcaption>Figure 1. “<a href="https://thenounproject.com/icon/image-1559833/">Image</a>” by <a href="https://thenounproject.com/alfadesign/">Alfa Design</a> from NounProject.com. This caption has the “figcaption” paragraph style; the surrounding chunk including the image and the caption has the “Figure” paragraph style.</figcaption></figure>
+<p>Word has some trouble getting the “Figure” style to apply to blank lines, so our Mammoth code that converts .docx files attempts to finesse the figcaption placement after the fact. Just… check the html output after conversion, just to make sure. </p>
+<p>In the latest version of the conversion script, image files will use the naming convention <em>handle_fig_#</em>, in all lowercase, where <em>handle </em>is something like the author’s last name and <em>#</em> is the number of the figure: so, for example, the image above would have a filename like <strong>author_and_winno_fig_1.png</strong>. This handle will be set at the time of conversion, using the folder name passed by the staging script. Stagers may need to copy high-resolution image files provided by authors into the appropriate folder before ingestion, and confirm that the image files share a naming convention.</p>
+<p>As far as accessibility, I am pleased to report that any built-in alt text will get picked up by Mammoth! If the alt text is not stored in the same file, though, stagers will have to edit the html file to add it before ingestion into Manifold. The html placement looks like this: <code><strong>&lt;img src=&quot;author_and_winno_fig_1.png&quot; </strong><em>alt=&quot;Example description emphasizing the main content of the figure, which doesn’t need to repeat the fact that it’s an image.&quot;</em><strong>&gt;</strong></code> (You would find the part in bold, then add something like the part in italics. Note that this all happens between the less-than and greater-than signs.)</p>
+
+<h3>For sub-sections, like this one on block quotes, use Heading 3</h3>
+<p>Should the authors quote someone at length in a block quote, use the “Blockquote” style, which will render appropriately:</p>
+<blockquote>
+<p>Blockquotes are often long, but sometimes you just want to set them off from the rest of the body even if they only extend over two lines.</p>
+<p>You can continue a blockquote across several paragraphs, as long as there’s no other style intervening between the “Blockquote” style chunks. (Nota 2016, 44) </p></blockquote>
+
+<h3>Here’s another sub-section, this time on tables</h3>
+<p>Tables should have a header and a caption. You can use built-in tools to place the table, and the <em>Caption</em> style for the caption itself. To designate the first row or column as a header in MS Word, place your cursor within the table to activate the Table Design options menu in the ribbon, and ensure either Header Row or First Column is checked, as needed. In LibreOffice, you can indicate whether there is a table heading when you’re first inputting the table, or (if it already exists) you can directly select the Table Heading paragraph style from the Styles Pane.</p><table><thead><tr><th>
+<p>Observation</p></th><th>
+<p>Variable 1</p></th><th>
+<p>Variable 2</p></th><th>
+<p>Calculated Variable</p></th></tr></thead><tbody><tr><td>
+<p>First</p></td><td>
+<p>23</p></td><td>
+<p>45</p></td><td>
+<p>68</p></td></tr><tr><td>
+<p>Second</p></td><td>
+<p>71</p></td><td>
+<p>90</p></td><td>
+<p>161</p></td></tr></tbody></table>
+<p>Table 1. This table is made up in such a way as to include all ten digits, for font-checking purposes.</p>
+
+<h2>Conclusion</h2>
+<p>This will be a short article, so I'll end it here.</p>
+
+<h2>References</h2>
+<p>As of 2021-11-08, we now use “References” as the title of the references section. It should be styled as a Heading 2, like the other section headings. Actual bibliographic entries, though, should take the paragraph-level “Reference” style.</p>
+
+</section> <!-- end article-body -->
+
+<section id="bibliography" class="bibliography">
+<p>Somme, Nehm. 2015. &quot;Article Title.&quot; <em>Venue of Publication</em> 12, no. 3: 456–78.</p>
+<p>Therwan, Hannah. 2014. “Title of Chapter in Edited Collection.” <em>Book Title: Probably Longer than This</em>. Publisher: City, ST. 9-10.</p>
+<p>Nota, Bennie. 2016. &quot;Each Source, A New Paragraph.&quot; <em>Keeps Entries Distinct</em>. <a href="http://may.require.searchandreplace/">http://may.require.searchandreplace</a>.</p>
+</section>
+
+
+<h2>Appendix A: Sample Materials from Workshop</h2>
+<p>An appendix, if it exists, comes after the main article's bibliography. It should be styled with a “Heading 2” that includes the word &quot;Appendix&quot; and a section title, as well as alphabetical numbering if there’s more than one. The text within the appendix, though, can just be in the “Normal” style</p>
+<p>Should the appendix be a PDF, we’ll need to manually attach the file as embedded media.</p>
+
+<h3>Headers can get pretty small in Appendixes</h3>
+<p>In the main body of the article, each section starts with “Heading 2,” because the main title of the article is “Heading 1.” In an appendix, everything's knocked down a peg: because the main title of the appendix is ”Heading 2,” here sections start with “Heading 3.”</p>
+
+<h4>I mean, really small</h4>
+<p>Thus, if you run into subsections, you'll be down to the h4 level. </p>
+
+<h3>Don't skip heading levels</h3>
+<p>You should never jump straight from a Heading 2 to a Heading 4, even if the font on the original suggests that you should. For screenreaders to function properly, they need to see a well-formed, meaningful hierarchy of headers.</p>
+
+<h3>References for Appendix A</h3>
+
+<section id="bibliography" class="bibliography">
+<p>Wait, Amin. 2020. &quot;Appendix with Its Own Bibliography?&quot; <em>Use the Reference Style Inside the Appendix Just Like You Did for the Main References Section.</em> Seriously: Attlebee, OK.</p>
+</section>
+
+
+<h2>Appendix B: Sometimes there’s code</h2>
+<p>Inline code can be flagged with the “<code>code</code>” character style. (See what we did there?) If you have a longer block of code, best to wrap it in the “preformatted text” paragraph style, so it gets flagged with the HTML <code>&lt;pre&gt;</code> tag (while still marking each line within the block as “code”):</p>
+<pre><code>10 print hello world;</code>
+<code>20 print goodbye codeblock;</code></pre>
+<p>Other uses of preformatted text (without code inside it) could include poetry where the line indentations are significant. But we haven’t seen a lot of that so far.</p>
+
+<h2>Acknowledgments</h2>
+<p>Acknowledgments, if provided, should appear just before the author bio, with another Heading 2 label at the top.</p>
+<p>In this case, the author wishes to thank caffeine, the Overthinking Institute, and High Blood Sugar for their contributions to the making of this article.</p>
+
+<h2>About the Authors</h2>
+<p>The last element we add to the page is the author bio(s), headed off once again by Heading 2. Use the paragraph-level “Authorbio” style, but mark up the author’s name with the character-level “authorname” style within it.</p>
+
+<section id="authorbio" class="authorbio">
+<p><span class="author-name">Thisbe Sez Author</span> is the author of numerous fictitious pieces, including <em>This Wasted Life</em>, a commentary on lost afternoons daydreaming to NPR podcasts, and <em>Productive Procrastination: In Pursuit of a Missing Legend</em>.</p>
+<p><span class="author-name">N. Owen Winno</span> is a mystery even to his fans, despite years of public intellectual service. Some blame the media; others blame the message. Putting a blank line between his bio and his co-author’s bio will mean each gets correctly parsed by Manifold as a new paragraph.</p>
+</section>
+<ol><li id="footnote-1">
+<p> Which I used to create this template. <a href="#footnote-ref-1">↑</a></p></li><li id="footnote-2">
+<p> Which we use for most JITP notes. <a href="#footnote-ref-2">↑</a></p></li><li id="footnote-3">
+<p> Which has some nice version control features. Does anyone use Apple Pages? <a href="#footnote-ref-3">↑</a></p></li></ol>
+<div class="entry-meta entry-meta-creative-commons">
+
+	<a data-logo="1" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" target="_blank"><img alt="Attribution-NonCommercial-ShareAlike 4.0 International" data-license="by-nc-sa" data-size="normal" src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" style="border-width:0"/></a>
+	<p>This entry is licensed under a Creative Commons <a data-logo="0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" target="_blank">Attribution-NonCommercial-ShareAlike 4.0 International</a> license.</p>
+
+</div>    
+
+</div> <!-- end text-column -->
+
+</body>
+</html>
