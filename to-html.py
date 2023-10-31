@@ -72,7 +72,10 @@ with open(input_file, "rb") as docx_file:
     interim_html = re.sub(r"</section>", r"\n</section>"+"\n", interim_html)
 
     # fix anchors that break figcaptions
-    interim_html = re.sub(r"</figcaption><a"+"(.*?)"+r"</a><figcaption>", r"<a"+r"\1"+r"</a>", interim_html)
+    interim_html = re.sub(r"</figcaption><a "+r"(.*?)"+r"</a><figcaption>", r"<a "+r"\1"+r"</a>", interim_html)
+
+    # fix figcaptions that fall just after the </figure>
+    interim_html = re.sub(r"</figure>\n<p>(<figcaption>.*?</figcaption>)</p>", r"\1</figure>", interim_html)
 
     # fix failure of :separator for pre
     interim_html = re.sub(r"</pre>"+"\n"+"<pre>", "\n", interim_html)
@@ -81,9 +84,9 @@ with open(input_file, "rb") as docx_file:
     interim_html = re.sub(r'<sup><sup>(.*?)</sup></sup>', r'<sup>\1</sup>', interim_html)
 
     interim_html = re.sub(r'<sup>(<a href="#footnote.*?)>\[(\d?)\]</a></sup>', r'\1 class="ftnref">\2</a>', interim_html)
-    
+
     # tuck table captions into the actual table
-    interim_html = re.sub(r"<p>"+"(<caption>.*?</caption>)"+r"</p><table>", r"<table>"+r"\1", interim_html) 
+    interim_html = re.sub(r"<p>"+"(<caption>.*?</caption>)"+r"</p><table>", r"<table>"+r"\1", interim_html)
 
     # tuck abstract h2 inside the abstract section; add matching id for consistency
     interim_html = re.sub(r'(<h2>.*Abstract</h2>\n)(\n)(<section class="abstract">\n)', r'\2\3\1', interim_html)
@@ -105,7 +108,7 @@ with open(input_file, "rb") as docx_file:
     # wrap everything after abstract and before footnotes in div#article-body
     interim_html = re.sub(r'(?s)(<section id="abstract".*?</section>)(\n*)(.*?)(<section)', r'\1 <!-- end abstract -->\n\n<section id="article-body">\n\3</section> <!-- end article-body -->\n\n\4', interim_html)
 
-    # wrap article-body + everything to end in div#text-column 
+    # wrap article-body + everything to end in div#text-column
     # (back compatibility from WordPress, sigh)
     interim_html = re.sub(r'(<section id="article-body")', r'<div id="text-column">\n\1', interim_html)
     interim_html = interim_html + '\n</div> <!-- end text-column -->\n'
@@ -117,7 +120,7 @@ with open(input_file, "rb") as docx_file:
 	<a data-logo="1" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" target="_blank"><img alt="Attribution-NonCommercial-ShareAlike 4.0 International" data-license="by-nc-sa" data-size="normal" src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" style="border-width:0"/></a>
 	<p>This entry is licensed under a Creative Commons <a data-logo="0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" target="_blank">Attribution-NonCommercial-ShareAlike 4.0 International</a> license.</p>
 
-</div>    
+</div>
 '''
     interim_html = re.sub(r'(\n</div> <!-- end text-column -->\n)', cc_html + r'\1', interim_html)
 
