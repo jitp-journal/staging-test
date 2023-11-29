@@ -2,6 +2,8 @@
 
 # Command line usage: ./to-html.py input_file output_dir
 
+# NB: before passing the Word file to mammoth, you may want to run a search-and-replace for " with " and ' with ' (to convert any straggling straight quotes to curly; Word is better at this).
+
 import mammoth
 import sys
 import re
@@ -63,6 +65,8 @@ with open(input_file, "rb") as docx_file:
 
     interim_html = result.value
 
+    ## Now mammoth is done!
+
     # add line breaks to make it more human-readable
     interim_html = re.sub(r"<p", "\n"+r"<p", interim_html)
     interim_html = re.sub(r"<h", "\n\n"+r"<h", interim_html)
@@ -72,13 +76,13 @@ with open(input_file, "rb") as docx_file:
     interim_html = re.sub(r"</section>", r"\n</section>"+"\n", interim_html)
 
     # fix anchors that break figcaptions
-    interim_html = re.sub(r"</figcaption><a "+r"(.*?)"+r"</a><figcaption>", r"<a "+r"\1"+r"</a>", interim_html)
+    interim_html = re.sub(r"</figcaption><a "+"(.*?)"+r"</a><figcaption>", r"<a "+"\1"+r"</a>", interim_html)
 
     # fix figcaptions that fall just after the </figure>
     interim_html = re.sub(r"</figure>\n<p>(<figcaption>.*?</figcaption>)</p>", r"\1</figure>", interim_html)
 
     # fix failure of :separator for pre
-    interim_html = re.sub(r"</pre>"+"\n"+"<pre>", "\n", interim_html)
+    interim_html = re.sub(r"</pre>"+"\n"+r"<pre>", "\n", interim_html)
 
     # fix footnote references
     interim_html = re.sub(r'<sup><sup>(.*?)</sup></sup>', r'<sup>\1</sup>', interim_html)
@@ -93,11 +97,12 @@ with open(input_file, "rb") as docx_file:
 
     interim_html = re.sub(r'(class="abstract")', r'id="abstract" \1', interim_html)
 
-    # same for bibliography and authorbio sections
+    # tuck bibliography h2 inside the bibliography section
     interim_html = re.sub(r'(<h2>.*References</h2>\n)(\n)(<section class="bibliography">\n)', r'\2\3\1', interim_html)
 
     interim_html = re.sub(r'(class="bibliography")', r'id="bibliography" \1', interim_html)
 
+    # tuck authorbio h2 inside the authorbio section
     interim_html = re.sub(r'(<h2>.*About the Author[s]*</h2>\n)(\n)(<section class="authorbio">\n)', r'\2\3\1', interim_html)
 
     interim_html = re.sub(r'(class="authorbio")', r'id="authorbio" \1', interim_html)
@@ -105,6 +110,18 @@ with open(input_file, "rb") as docx_file:
     # add section + h2 for footnotes, move footnotes to just before references
     interim_html = re.sub(r'(?s)(<section id="bibliography".*?</section>)(\n*)(<section id="authorbio".*?</section>\n)(<ol><li id="footnote.*?</ol>)', r'<section class="footnoteblock">\n<h2>Notes</h2>\n\4\n</section> <!-- end footnoteblock -->\n\n\1\n\n\3', interim_html)
 
+    ### save time on copyediting
+    # Convert double spaces to single spaces
+    interim_html = re.sub(r'  ', r' ', interim_html)
+
+    # Convert hyphens to en-dashes when they appear between numbers
+    interim_html = re.sub(r'(\d)-(\d)', r'\1–\2', interim_html)
+
+    # Convert endash between spaces to emdash without spaces
+    interim_html = re.sub(r'(\w) – (\w)', r'\1—\2', interim_html)
+
+
+    ### big wraparound html chunks
     # wrap everything after abstract and before footnotes in div#article-body
     interim_html = re.sub(r'(?s)(<section id="abstract".*?</section>)(\n*)(.*?)(<section)', r'\1 <!-- end abstract -->\n\n<section id="article-body">\n\3</section> <!-- end article-body -->\n\n\4', interim_html)
 
@@ -163,8 +180,9 @@ with open(input_file, "rb") as docx_file:
         title_html = '<meta name="citation_title" content="' + title + '">' + '\n\t<title>' + title + '</title>'
         interim_html = re.sub(r'</head>', '\t' + title_html + '\n</head>', interim_html)
 
-    # TO DO: add author last name to <title> instead of just the article title
-
+    # TO DO: add author last name to <title> instead of just the article title, to make it easier to find in Manifold after uploading.
+    # OR NOT: It would help Manifold, but would be a problem for citation software if Manifold ever decides to include our <head> data.
+    
 
     # can we also prepopulate the abstract field? multiparagraph is tricky, but let's try a substitution.
     abstract_html = re.findall(r'(?s)<h2>Abstract</h2>\n(.*?)</section>', interim_html)
