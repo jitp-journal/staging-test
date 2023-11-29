@@ -44,13 +44,13 @@ Mammoth is a library for transforming .docx files into .html files. You'll need 
 <details><summary>More detail on what each piece of that command does, so you can modify if necessary</summary>
 <dl>
 <dt><code>python3</code></dt>
-<dd>This instructs the computer to use Python 3, even if you have Python 2 on your computer. This is essential for making sure the program can find the mammoth library.</dd><br/>
+<dd>This instructs the computer to use Python 3, even if you have Python 2 on your computer. This is essential for making sure the program can find the mammoth library.</dd>
 <dt><code>to-html.py</code></dt>
-<dd>The path to the conversion script. If you're in the same directory, you don't need a prefix. If you keep the file somewhere else, just add the relative path to the file's location, e.g. <code>../staging/to-html.py</code>. Note that the two dots mean "go up one directory."</dd><br/>
+<dd>The path to the conversion script. If you're in the same directory, you don't need a prefix. If you keep the file somewhere else, just add the relative path to the file's location, e.g. <code>../staging/to-html.py</code>. Note that the two dots mean "go up one directory."</dd>
 <dt><code>myfile.docx</code></dt>
-<dd>The path to the file you're converting. If your filename has spaces, you can escape them with a backslash, like this: <code>my\ filename\ with\ spaces.docx</code>. You can probably get the command line to autocomplete the filename by typing in the first few letters and hitting <code>tab</code>.</dd><br/>
+<dd>The path to the file you're converting. If your filename has spaces, you can escape them with a backslash, like this: <code>my\ filename\ with\ spaces.docx</code>. You can probably get the command line to autocomplete the filename by typing in the first few letters and hitting <code>tab</code>.</dd>
 <dt><code>myfile</code></dt>
-<dd>The name of the output directory. Avoid spaces in this directory name. Often using the first author's last name is a good approach. And if you stick to all lowercase letters, you never need to remember whether the filename is capitalized.</dd><br/>
+<dd>The name of the output directory. Avoid spaces in this directory name. Often using the first author's last name is a good approach. And if you stick to all lowercase letters, you never need to remember whether the filename is capitalized.</dd>
 </dl>
 </details>
 <br/>
