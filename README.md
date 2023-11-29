@@ -1,12 +1,14 @@
 # What is this repo?
 A space in which to experiment with staging templates, scripts, and workflows
 
+<div class="alert alert-warning"><a href="STAGE.md"><strong>Looking for stager instructions?</strong> Click here.</a></div>
+
 # How do I use this repo?
-Clone (or fork, you be the judge) and set up a virtual Python 3 environment to minimize conflicts between local setups and versions; the few packages you'll need are listed in `requirements.txt`. With your own environment set up, you can quickly load these packages using `pip install -r requirements.txt`. 
+Clone (or fork, you be the judge) and set up a virtual Python 3 environment to minimize conflicts between local setups and versions; the few packages you'll need are listed in `requirements.txt`. With your own environment set up, you can quickly load these packages using `pip install -r requirements.txt`.
 
 NB: If you install more packages, please update the requirements using `pip freeze > requirements.txt`.
 
-**To set up a virtual environment for Python**, see [https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/). 
+**To set up a virtual environment for Python**, see [https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/).
 
 # What's in the repo?
 
@@ -25,11 +27,10 @@ To-do list:
 * [X] Test `to-html.py` on more real articles
 * [ ] Investigate automation:
   * [ ] Github path
-    - [ ] Set up GitHub Actions to call `to-html.py` on push, only on .docx files that have changed 
+    - [ ] Set up GitHub Actions to call `to-html.py` on push, only on .docx files that have changed
     - [ ] Write documentation for stagers on how to upload/download using GitHub
   * [ ] Shiny path
     - [X] Set up R Shiny app to call Python functions via `reticulate` package ([Thanks again](https://github.com/jitp-journal/jitp-converter), @palermog!)
     - [ ] Update app with latest versions of `to-html.py` and CSS
     - [ ] Add download functionality
-* [ ] Update documentation for stagers
-
+* [X] Update documentation for stagers
