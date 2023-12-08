@@ -120,6 +120,9 @@ with open(input_file, "rb") as docx_file:
     # Convert endash between spaces to emdash without spaces
     interim_html = re.sub(r'(\w) – (\w)', r'\1—\2', interim_html)
 
+    # Don't trap trailing spaces inside html tags
+    interim_html = re.sub(r' (</.*?>)', r'\1 ', interim_html)
+
 
     ### big wraparound html chunks
     # wrap everything after abstract and before footnotes in div#article-body
@@ -181,8 +184,8 @@ with open(input_file, "rb") as docx_file:
         interim_html = re.sub(r'</head>', '\t' + title_html + '\n</head>', interim_html)
 
     # TO DO: add author last name to <title> instead of just the article title, to make it easier to find in Manifold after uploading.
-    # OR NOT: It would help Manifold, but would be a problem for citation software if Manifold ever decides to include our <head> data.
-    
+    # OR NOT: It would help us in Manifold, but would be a problem for citation software if Manifold ever decides to include our <head> data.
+
 
     # can we also prepopulate the abstract field? multiparagraph is tricky, but let's try a substitution.
     abstract_html = re.findall(r'(?s)<h2>Abstract</h2>\n(.*?)</section>', interim_html)
