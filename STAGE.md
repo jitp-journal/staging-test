@@ -14,12 +14,31 @@ Most of the complexity here, then, is (a) getting set up and (b) making sure it 
 
 ## 1. Styling the document in Word or OpenOffice
 
-Stagers can now use built-in Styles features in your favorite word processors to mark paragraphs (or character spans) as the specific content types we use at JITP, from headings to abstracts to figures and more. Additional guidance coming soon (though some of it is included in the files themselves), but here are the relevant files:
+Stagers can now use built-in Styles features in your favorite word processors to mark paragraphs (or character spans) as the specific content types we use at JITP, from headings to abstracts to figures and more. The script [to-html.py](to-html.py), run in step 2 below, will detect those styles and output valid HTML. It will also detect any images in the .docx file and create copies in the same new folder as the html file, ready to be compressed into .zip and ingested into Manifold.
+
+Here are the relevant files:
 
 * [MS Word style template](jitp-staging-test.dotx)
 * [OpenOffice style template](jitp-staging-test.odt)
 
+If you open them, you'll see guidance for which styles apply to which elements of a typical JITP document.
+
+But before you can begin marking up a document for staging, you will first have to **attach the templates to the files**, so the styles become available to apply.
+
+* On Word for Mac, this means using the Tools menu > Templates & Add-Ins > click the Attach button > navigate to & select the template file.
+* On Word for Windows, the location varies by edition, but the steps are outlined in [official support documentation](https://support.microsoft.com/en-us/office/load-or-unload-a-template-or-add-in-program-2479fe53-f849-4394-88bb-2a6e2a39479d#bm1).
+* In LibreOffice, the menu path is Styles > Load Style from Template > From File.
+
+Once the templates are attached to the coypedited file, you'll be able to highlight the text (of an abstract, say, or a blockquote) and click on the style name in the Styles pane to apply it.
+
+
+You'll also want to **make sure the images are embedded directly in the .docx file**, and that each image is **marked with the correct alt text**. The authors should provide both the image files to embed and the alt text that describes them.
+
+
 Be sure to save your file as .docx, whichever software you're using.
+
+If you're running Mammoth on your own computer, read on. If not, send the templated .docx file to the <dfn title="Editorial Collective">EC</dfn> member who will run it and update the staging spreadsheet so the Managing Editor knows where we are in the process. If you're not sure who that person is, send it to the Managing Editor.
+
 
 ## 2. Running the Mammoth script
 
