@@ -28,6 +28,8 @@ But before you can begin marking up a document for staging, you will first have 
 * On Word for Windows, the location varies by edition, but the steps are outlined in [official support documentation](https://support.microsoft.com/en-us/office/load-or-unload-a-template-or-add-in-program-2479fe53-f849-4394-88bb-2a6e2a39479d#bm1).
 * In LibreOffice, the menu path is Styles > Load Style from Template > From File.
 
+NB: If you're loading the template but nothing seems to change, try detaching the template using the same menus as above, and then reattach it again. It's a bit of a kludge, but it seems to help. `¯\_(ツ)_/¯`
+
 Once the templates are attached to the coypedited file, you'll be able to highlight the text (of an abstract, say, or a blockquote) and click on the style name in the Styles pane to apply it.
 
 
