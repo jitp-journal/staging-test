@@ -45,14 +45,14 @@ If you're running Mammoth on your own computer, read on. If not, send the templa
 
 Mammoth is a library for transforming .docx files into .html files. You'll need Python to run our custom JITP Mammoth script, but once you're set up, it's just one line at the [command prompt](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line) (a.k.a. Terminal) and you're basically set!
 
-<details><summary>2a. <strong>Set up your environment</strong>. Some things you only have to do the first time you stage; after that, you can go straight to 2b.</summary>
+<details><summary>2a. <strong>Set up your environment</strong>. Some things you only have to do the first time you stage; click here to expand (and, later, contract) those instructions. For future staging, you can skip straight to 2b.</summary>
 
 <ul>
 <li>If you haven't yet, <a href="https://www.python.org/downloads/release/python-3120/">install Python 3</a>.</li>
 <li>With Python installed, run <code>pip3 install mammoth</code> to make sure you have the library on your system.</li>
-<li>Download the JITP conversion script: <a href="to-html.py">to-html.py</a>. For convenience, we recommend that you place this in the directory where you'll keep your .docx files to convert. For the sake of these instructions, let's call that directory <code>staging</code> and suppose it's a subdirectory of <code>jitp</code>. If you use some other location, make the appropriate substitutions as we move forward.</li>
+<li>Download the JITP conversion script: navigate to <a href="to-html.py">to-html.py</a> and click the download button at the top right of the page: <ul><li><img alt="Download raw file" src="download-raw.png"></li><li>For convenience, we recommend that you place this in the directory where you'll keep your .docx files to convert. For the sake of these instructions, let's call that directory <code>staging</code> and suppose it's a subdirectory of <code>jitp</code>. If you use some other location, make the appropriate substitutions as we move forward.</li></ul></li>
 <li>Find your files. At the command line, navigate to the staging directory with the <code>cd</code> command (e.g. <code>cd ~/jitp/staging</code>).</li>
-<li>Change the JITP script's mode to executable. From within the staging directory, tell your computer that the file contains commands by typing <code>chmod +x to-html.py</code>.</li>
+<li>Change the JITP script's mode to <em>executable</em>, so you can run it (and not just read it). From within the staging directory, tell your computer that this file contains commands by typing <code>chmod +x to-html.py</code>.<ul><li>Click here for <a href="https://cets.seas.upenn.edu/answers/chmod.html">more on <code>chmod</code></a>.</li></ul></li>
 </ul>
 
 <p>Again, <strong>you should only have to do these steps once</strong>, when you first start using this process. For all subsequent times, you can skip straight to the steps below.</p>
@@ -70,12 +70,12 @@ Mammoth is a library for transforming .docx files into .html files. You'll need 
 <dt><code>myfile.docx</code></dt>
 <dd>The path to the file you're converting. If your filename has spaces, you can escape them with a backslash, like this: <code>my\ filename\ with\ spaces.docx</code>. You can probably get the command line to autocomplete the filename by typing in the first few letters and hitting <code>tab</code>.</dd>
 <dt><code>myfile</code></dt>
-<dd>The name of the output directory. Avoid spaces in this directory name. Often using the first author's last name is a good approach. And if you stick to all lowercase letters, you never need to remember whether the filename is capitalized.</dd>
+<dd>The name of an output directory to hold the converted files. Avoid spaces in this directory name. Often using the first author's last name is a good approach – and if you stick to all lowercase letters, you never need to remember whether the filename is capitalized.</dd>
 </dl>
 </details>
 <br/>
 
-And that's it! If the setup in 2a was successful, you should see the new output directory appear in your file system as a subfolder of `staging` (or whatever your current directory is called). The output directory will contain one .html file and a separate image file for each image in the original document.
+And that's it! If the setup in 2a was successful, when you run the command in 2b **you should see a new output directory appear** in your file system, as a subfolder of `staging` (or whatever your current directory is called). This output directory will contain one .html file and a separate image file for each image in the original document.
 
 ## 3. Preparing for Manifold
 
