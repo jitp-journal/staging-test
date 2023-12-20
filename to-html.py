@@ -76,7 +76,7 @@ with open(input_file, "rb") as docx_file:
     interim_html = re.sub(r"</section>", r"\n</section>"+"\n", interim_html)
 
     # fix anchors that break figcaptions
-    interim_html = re.sub(r"</figcaption><a "+"(.*?)"+r"</a><figcaption>", r"<a "+"\1"+r"</a>", interim_html)
+    interim_html = re.sub(r"</figcaption><a(.*?)</a><figcaption>", r"<a\1</a>", interim_html)
 
     # fix figcaptions that fall just after the </figure>
     interim_html = re.sub(r"</figure>\n<p>(<figcaption>.*?</figcaption>)</p>", r"\1</figure>", interim_html)
@@ -114,15 +114,20 @@ with open(input_file, "rb") as docx_file:
     # Convert double spaces to single spaces
     interim_html = re.sub(r'  ', r' ', interim_html)
 
-    # Convert hyphens to en-dashes when they appear between numbers
-    interim_html = re.sub(r'(\d)-(\d)', r'\1–\2', interim_html)
+    # Convert hyphens to en-dashes when they appear between numbers... unless they appear in URLs
+    hyphen_url_check = re.compile(r'href="[^"]*?\d-\d|(\d)-(\d)')
+    def hyphen_skip_urls(m):
+        if m.group(1):
+            return '{}–{}'.format(*m.groups())
+        else:
+            return m.group(0)
+    interim_html = re.sub(hyphen_url_check, hyphen_skip_urls, interim_html)
 
     # Convert endash between spaces to emdash without spaces
     interim_html = re.sub(r'(\w) – (\w)', r'\1—\2', interim_html)
 
     # Don't trap trailing spaces inside html tags
     interim_html = re.sub(r' (</.*?>)', r'\1 ', interim_html)
-
 
     ### big wraparound html chunks
     # wrap everything after abstract and before footnotes in div#article-body
