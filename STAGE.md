@@ -4,11 +4,11 @@ Welcome, everyone! The steps below go into some detail, but the processes they d
 
 Most of the complexity here, then, is (a) getting set up and (b) making sure it worked.
 
-1. Styling the document in Word or OpenOffice
-2. Running the Mammoth script
-3. Preparing for Manifold
-4. Testing in Manifold
-5. Done!
+1. [Styling the document in Word or OpenOffice](#1-styling-the-document-in-word-or-openoffice)
+2. [Running the Mammoth script](#2-running-the-mammoth-script)
+3. [Preparing for Manifold](#3-preparing-for-manifold)
+4. [Testing in Manifold](#4-testing-in-manifold)
+5. [Done!](#5-done)
 
 
 ## 1. Styling the document in Word or OpenOffice
@@ -30,7 +30,7 @@ But before you can begin marking up a document for staging, you will first have 
 
 NB: If you're loading the template but nothing seems to change, try detaching the template using the same menus as above, and then reattach it again. It's a bit of a kludge, but it seems to help. `¯\_(ツ)_/¯`
 
-Once the templates are attached to the coypedited file, you'll be able to highlight the text (of an abstract, say, or a blockquote) and click on the style name in the Styles pane to apply it.
+Once the templates are attached to the copyedited file, you'll be able to highlight the text (of an abstract, say, or a blockquote) and click on the style name in the Styles pane to apply it.
 
 
 You'll also want to **make sure the images are embedded directly in the .docx file**, and that each image is **marked with the correct alt text**. The authors should provide both the image files to embed and the alt text that describes them.
