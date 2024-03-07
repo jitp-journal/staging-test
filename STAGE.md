@@ -111,9 +111,9 @@ If anything looks *individually* off, you'll need to go back to the relevant fil
 
 * If you have to change image files (e.g. to get better resolution), you can just replace the old files with new ones. As long as they keep the same name, you won't need to change the html.
 
-* If you have to go back to the Word document and change the styles as in step 1 above, you'll need re-run the mammoth script again as in step 2. However, the script will probably complain that the destination folder already exists. In that case, delete that output folder and try again.
+* If you have to go back to the Word document and change the styles as in step 1 above, you'll need re-run the mammoth script again as in [step 2](#2-running-the-mammoth-script). However, the script will probably complain that the destination folder already exists. In that case, delete that output folder and try again.
 
-When you're done making changes and want to confirm that they worked, compress the folder again as in step 3 above, then head back to Manifold. You can use the "Reingest" menu item on that specific text's admin view to avoid creating multiple copies of the same article.
+When you're done making changes and want to confirm that they worked, compress the folder again as in [step 3](#3-preparing-for-manifold) above, then head back to Manifold. You can use the "Reingest" menu item on that specific text's admin view to avoid creating multiple copies of the same article.
 
 
 ## 5. Done!
