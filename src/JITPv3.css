@@ -1,0 +1,160 @@
+/*
+Document: JITP Styles for Manifold
+v1 by Kelly Hammond, Greg Palermo, 2022-04-01
+v2 with updates by Ben Miller, 2023-04-29
+*/
+
+/*===PARATEXT===*/
+
+#abstract, #authorbio, /* for back-compatability */
+.abstract, .authorbio /* moving forward */ {
+    background-color: whitesmoke;
+    font-size: 0.8em;
+    line-height: 1.2;
+    margin: 1.5em 0;
+    padding: .5em 25px;
+}
+
+.author-name {
+    font-weight: bold;
+}
+
+
+/*===ARTICLE BODY===*/
+
+ul, ol {
+    margin: 1.5em 10px 1.5em 50px;
+    padding: 0.5em 10px;
+}
+
+li {
+    margin: .5em 0;
+}
+
+/* Don't add extra padding for nested lists */
+li ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #ccc;
+    margin: 1.5em 10px 1.5em 50px;
+    padding: 1.5em 10px;
+}
+
+pre {
+ /* code block */
+    background-color: whitesmoke;
+    border-bottom: 1px solid #ddd;
+    margin: 1.5em 10px;
+    padding: 20px;
+    tab-size: 2;
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+code {
+ /* inline code */
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+    font-size: 0.8em;
+}
+
+/*===FIGURES and TABLES===*/
+
+figure {
+    display: block;
+    margin: 1.5em auto 1.5em auto;
+    padding: 0.5em 10px;
+    font-size: 0.8em;
+}
+
+figure ul, figure ol {
+  /* only lists in figures */
+    margin: 0 0 0 .5em;
+    padding: 0 0 0 1em;
+}
+
+figcaption, caption {
+    text-align: center;
+    font-size: 0.8em;
+}
+
+caption {
+    caption-side: bottom;
+}
+
+table {
+    margin: 1em auto;
+}
+
+th {
+    background-color: whitesmoke;
+    font-weight: bold;
+}
+
+th, td {
+    text-align: top, left;
+    border-bottom: 1px solid #ddd;
+    padding: 1em 1em 1.5em 1em;
+    line-height: 1.2;
+    font-size: 0.8em;
+}
+
+/*===ACCESSIBILITY===*/
+/* Class to present content only to screen readers (thus sr) but hidden visually */
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/*===NOTES AND REFERENCES===*/
+
+.ftnref {
+  /*looks to be `ftn` in places */
+    font-size: .83em;
+    vertical-align: super;
+}
+
+/* Mammoth formats footnotes as lists; close up extra space this adds */
+.footnoteblock > ol {
+    margin-top: -1.5em;
+    margin-left: 0.5rem;
+}
+
+#bibliography,  /* for back-compatability */
+.bibliography   /* moving forward */ {
+    padding-left: 22px;
+    text-indent: -1em;
+}
+
+/*===FOUND IN PRODUCTION, SOURCE UNCLEAR===*/
+
+.caption {
+    text-align: center;
+    font-size: 90%;
+}
+
+.quote {
+    text-align: center;
+    font-style: italic;
+    margin: 10%;
+}
+
+.textTitle {
+    text-align: center;
+}
+
+.byline {
+    text-align: center;
+    text-indent: 0;
+}
+
+.pf1 {
+    text-indent: 0;
+}

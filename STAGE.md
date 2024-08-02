@@ -17,8 +17,8 @@ Stagers can now use built-in Styles features in your favorite word processors to
 
 Here are the relevant files:
 
-* [MS Word style template](jitp-staging-test.dotx)
-* [OpenOffice style template](jitp-staging-test.odt)
+* [MS Word style template](src/jitp-staging-test.dotx)
+* [OpenOffice style template](src/jitp-staging-test.odt)
 
 If you open them, you'll see guidance for which styles apply to which elements of a typical JITP document.
 
@@ -50,7 +50,7 @@ Mammoth is a library for transforming .docx files into .html files. You'll need 
 <ul>
 <li>If you haven't yet, <a href="https://www.python.org/downloads/release/python-3120/">install Python 3</a>.</li>
 <li>With Python installed, run <code>pip3 install mammoth</code> to make sure you have the library on your system.</li>
-<li>Download the JITP conversion script: navigate to <a href="to-html.py">to-html.py</a> and click the download button at the top right of the page: <ul><li><img alt="Download raw file" src="download-raw.png"></li><li>For convenience, we recommend that you place this in the directory where you'll keep your .docx files to convert. For the sake of these instructions, let's call that directory <code>staging</code> and suppose it's a subdirectory of <code>jitp</code>. If you use some other location, make the appropriate substitutions as we move forward.</li></ul></li>
+<li>Download the JITP conversion script: navigate to <a href="to-html.py">to-html.py</a> and click the download button at the top right of the page: <ul><li><img alt="Download raw file" src="src/download-raw.png"></li><li>For convenience, we recommend that you place this in the directory where you'll keep your .docx files to convert. For the sake of these instructions, let's call that directory <code>staging</code> and suppose it's a subdirectory of <code>jitp</code>. If you use some other location, make the appropriate substitutions as we move forward.</li></ul></li>
 <li>Find your files. At the command line, navigate to the staging directory with the <code>cd</code> command (e.g. <code>cd ~/jitp/staging</code>).</li>
 <li>Change the JITP script's mode to <em>executable</em>, so you can run it (and not just read it). From within the staging directory, tell your computer that this file contains commands by typing <code>chmod +x to-html.py</code>.<ul><li>Click here for <a href="https://cets.seas.upenn.edu/answers/chmod.html">more on <code>chmod</code></a>.</li></ul></li>
 </ul>
@@ -95,7 +95,7 @@ You're now ready to upload the .zip file to Manifold! We'll make sure everything
 
 4c. **Open the text's backend interface**. The filename in Manifold should be the *title* of the file you uploaded (rather than the author name). Click on it from the admin view to get a new menu of options, including Styles.
 
-4d. **Add JITP styles**. Click on the Styles option, then "Add a New Stylesheet." In the Name field, write JITP. In the Source Styles box, paste in the contents of the JITP CSS file. (As of Issue 22, that was [JITPv2.css](JITPv2.css).) This is what will make the abstract, blockquotes, bibliography, figure captions, etc look like our journal wants them to look! To complete the process, under "Apply to these text sections" click "Add all" and then "Save Stylesheet".
+4d. **Add JITP styles**. Click on the Styles option, then "Add a New Stylesheet." In the Name field, write JITP. In the Source Styles box, paste in the contents of the JITP CSS file. (As of Issue 23, that was [JITPv3.css](src/JITPv3.css).) This is what will make the abstract, blockquotes, bibliography, figure captions, etc look like our journal wants them to look! To complete the process, under "Apply to these text sections" click "Add all" and then "Save Stylesheet".
 
 4e. **Remove non-JITP styles**. Back on the Styles page, you should now see JITP added to the list next to something called _Global Styles_. We want to get rid of the latter, so click on the Trash icon next to Global Styles and confirm that Yes, you want to delete this stylesheet. (Don't worry: it'll appear on its own for the next file you upload).
 

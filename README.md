@@ -1,7 +1,16 @@
 # What is this repo?
 A space in which to experiment with staging templates, scripts, and workflows
 
-<div class="alert alert-warning"><a href="STAGE.md"><strong>Looking for stager instructions?</strong> Click here.</a></div>
+<div style="position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5; 
+    display: inline-block;
+    width: 100%;"><a href="STAGE.md" style="color: #523e02; font-weight: 700;"><strong>Looking for stager instructions?</strong> Click here.</a></div>
 
 # How do I use this repo?
 Clone (or fork, you be the judge) and set up a virtual Python 3 environment to minimize conflicts between local setups and versions; the few packages you'll need are listed in `requirements.txt`. With your own environment set up, you can quickly load these packages using `pip install -r requirements.txt`.
