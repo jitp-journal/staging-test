@@ -13,7 +13,7 @@ A space in which to experiment with staging templates, scripts, and workflows
     width: 100%;"><a href="STAGE.md" style="color: #523e02; font-weight: 700;"><strong>Looking for stager instructions?</strong> Click here.</a></div>
 
 # How do I use this repo?
-Clone (or fork, you be the judge) and set up a virtual Python 3 environment to minimize conflicts between local setups and versions; the few packages you'll need are listed in `requirements.txt`. With your own environment set up, you can quickly load these packages using `pip install -r requirements.txt`.
+Clone (or fork, you be the judge) and set up a virtual Python 3 environment to minimize conflicts between local setups and versions; the few packages you'll need are listed in [requirements.txt](requirements.txt). With your own environment set up, you can quickly load these packages using `pip install -r requirements.txt`.
 
 NB: If you install more packages, please update the requirements using `pip freeze > requirements.txt`.
 
