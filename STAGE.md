@@ -103,7 +103,7 @@ You're now ready to upload the .zip file to Manifold! We'll make sure everything
 
 ### Making changes, if necessary
 
-If something is *systematically* wrong, we should probably fix the script. Check the [issue queue](issues) to see if someone's already logged the bug, and if not, please create a new one.
+If something is *systematically* wrong, we should probably fix the script. Check the [issue queue](https://github.com/jitp-journal/staging-test/issues) to see if someone's already logged the bug, and if not, please create a new one.
 
 If anything looks *individually* off, you'll need to go back to the relevant file, make the change, and repeat the process above. (We're hoping this kind of small-scale editing will become easier in future Manifold releases.)
 
